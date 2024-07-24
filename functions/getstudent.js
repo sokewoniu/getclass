@@ -1,4 +1,4 @@
-export function onRequest(context) {
+export async onRequest(context) {
     const { d1 } = env;
     const stmt = d1.prepare("SELECT * FROM student LIMIT 3");
     const { results } = await stmt.all();
