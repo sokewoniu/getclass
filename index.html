@@ -1,0 +1,21 @@
+<html lang="en"><head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>查询分班信息</title>  
+    <link rel="stylesheet" href="styles.css">  
+</head>  
+<body>  
+    <h1>查询分班信息</h1>  
+    <form id="searchForm">  
+        <label for="name">学生姓名:</label>  
+        <input type="text" id="name" name="name">
+        <label for="code">身份证后六位:</label>  
+        <input type="text" id="code" name="code">  
+        <button type="button" onclick="searchStudent()">查询</button>  
+    </form>  
+    <div id="result"></div>  
+  
+    <script src="script.js"></script>  
+  
+</body>
+</html>
