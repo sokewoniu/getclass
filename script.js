@@ -6,7 +6,7 @@ function searchStudent() {
 	const searchData = { name,code};  
 
 	// 使用fetch API发送POST请求  
-	fetch('getStudent', {  
+	fetch('getstudent', {  
 		method: 'POST', // 指定请求方法为POST  
 		headers: {  
 			'Content-Type': 'application/json', // 设置请求头，告诉服务器我们发送的是JSON数据  
