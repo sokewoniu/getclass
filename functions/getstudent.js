@@ -1,4 +1,5 @@
 export async function onRequest(context) {
+try{
     const { d1 } = context.env;
     const params = await context.request.formData();
     const stmt = d1.prepare("SELECT * FROM student where name=?1 and code=?2").bind(params.get('name'),params.get('code'));
@@ -9,4 +10,16 @@ export async function onRequest(context) {
         'Content-Type': 'application/json;charset=utf-8',
       },
     });
+}
+catch(e)
+{
+let pretty = JSON.stringify({error:e}, null, 2);
+
+return new Response(pretty, {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    });
+
+}
 }
