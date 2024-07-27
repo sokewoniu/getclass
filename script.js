@@ -15,7 +15,7 @@ function searchStudent() {
 	})  
 	.then(response => {  
 		if (!response.ok) {  
-			throw new Error('Network response was not ok');  
+			throw new Error('服务器未响应，请检查网络');  
 		}  
 		return response.json(); // 解析JSON响应  
 	})  
@@ -24,6 +24,8 @@ function searchStudent() {
 		const resultDiv = document.getElementById('result');  
 		if (data.ok) { // 假设后端返回了一个包含found属性的对象  
 			const student = data.data;
+			if(!student)
+				throw '未查询到信息，请检查输入信息是否正确';
 			resultDiv.innerHTML = `找到学生: ${student.name}, 身份证后六位：${student.code} 班级: ${student.class}</br>请扫下面二维码入班级群</br><img width=300px src='class${student.class}.jpg' />`;  
 		} else {  
 			resultDiv.innerHTML = data.error;  
@@ -31,8 +33,7 @@ function searchStudent() {
 	})
 	.catch(error => {  
 		// 处理请求或响应中的错误  
-		console.error('There was a problem with your fetch operation:', error);  
 		const resultDiv = document.getElementById('result');  
-		resultDiv.innerHTML = '查询出错，请稍后再试。';  
+		resultDiv.innerHTML = '查询出错:'+error;  
 	});
 }
